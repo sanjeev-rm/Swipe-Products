@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct SwipeProductsApp: App {
+    
+    @StateObject var productsViewModel = ProductsViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ProductsView()
+                .environmentObject(productsViewModel)
         }
     }
 }
