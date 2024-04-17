@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// MultipartRequest , for Multiform post request
 public struct MultipartRequest {
     
     public let boundary: String

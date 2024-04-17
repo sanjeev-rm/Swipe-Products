@@ -33,20 +33,6 @@ class ProductAPIService {
         case failedRequest = "Failed request, status code != 200"
     }
     
-    struct AddProductResponseBody: Codable {
-        var message: String
-        var productDetails: Product
-        var productId: Int
-        var isSuccess: Bool
-        
-        enum CodingKeys: String, CodingKey {
-            case message
-            case productDetails = "product_details"
-            case productId = "product_id"
-            case isSuccess = "success"
-        }
-    }
-    
     /// Function to get products
     /// - returns: products
     func getProducts() async throws -> [Product] {
@@ -58,6 +44,7 @@ class ProductAPIService {
         return decodedProducts
     }
     
+    /// Function to add a product to products
     func addProduct(product: Product, image: UIImage?) async throws {
         
         var multipart = MultipartRequest()

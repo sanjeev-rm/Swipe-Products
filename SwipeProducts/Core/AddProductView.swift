@@ -36,7 +36,7 @@ struct AddProductView: View {
                     }
                 }
             }
-            .navigationTitle("Add Product")
+            .navigationTitle(addProductVM.showSuccessMessage ? "" : "Add Product")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if !addProductVM.showSuccessMessage {
@@ -57,7 +57,7 @@ extension AddProductView {
     private var productTypeSection: some View {
         Section("Product Type") {
             Picker("Select type", selection: $addProductVM.product.productType) {
-                Text("").tag("")
+                Text("").tag("").hidden()
                 ForEach(productsVM.productTypes, id: \.self) { type in
                     Text(type.uppercased())
                         .tag(type)
@@ -146,8 +146,10 @@ extension AddProductView {
             Task {
                 if addProductVM.selectedImage == nil {
                     addProductVM.image = nil
-                } else if let image = try? await addProductVM.selectedImage?.loadTransferable(type: Image.self) {
-                    addProductVM.image = image
+                } else if let imageData = try? await addProductVM.selectedImage?.loadTransferable(type: Data.self) {
+                    if let uiImage = UIImage(data: imageData) {
+                        addProductVM.image = Image(uiImage: uiImage)
+                    }
                 } else {
                     print("DEBUG: unable to load selected image")
                 }
@@ -183,9 +185,9 @@ extension AddProductView {
                 .font(.largeTitle)
                 .foregroundColor(.green)
             
-            Text("Product added!")
+            Text("Added \(addProductVM.product.productName)!")
                 .font(.largeTitle)
-                .fontWeight(.light)
+                .fontWeight(.medium)
                 .foregroundStyle(.primary.opacity(0.6))
             
             ProgressView()
@@ -193,7 +195,6 @@ extension AddProductView {
                 .dynamicTypeSize(.accessibility1)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.systemGroupedBackground))
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation(.easeOut) {

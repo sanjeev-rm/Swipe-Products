@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C735DC472BD01570009F61B2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C735DC462BD01570009F61B2 /* Launch Screen.storyboard */; };
 		C7496EFD2BCDA8D3008D6A6E /* SwipeProductsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7496EFC2BCDA8D3008D6A6E /* SwipeProductsApp.swift */; };
 		C7496EFF2BCDA8D3008D6A6E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7496EFE2BCDA8D3008D6A6E /* ContentView.swift */; };
 		C7496F012BCDA8D4008D6A6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7496F002BCDA8D4008D6A6E /* Assets.xcassets */; };
@@ -18,11 +19,13 @@
 		C7496F1A2BCE25D2008D6A6E /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7496F192BCE25D2008D6A6E /* ProductsViewModel.swift */; };
 		C7496F1C2BCE3402008D6A6E /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7496F1B2BCE3402008D6A6E /* AddProductView.swift */; };
 		C7496F202BCE4425008D6A6E /* AddProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7496F1F2BCE4425008D6A6E /* AddProductViewModel.swift */; };
+		C74FCB8F2BCFB7090093DF76 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FCB8E2BCFB7090093DF76 /* ProductView.swift */; };
 		C75FDFB32BCF885800EFF2DE /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FDFB22BCF885800EFF2DE /* Data+Extension.swift */; };
 		C75FDFB52BCF888200EFF2DE /* MultipartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FDFB42BCF888200EFF2DE /* MultipartRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C735DC462BD01570009F61B2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C7496EF92BCDA8D3008D6A6E /* SwipeProducts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeProducts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7496EFC2BCDA8D3008D6A6E /* SwipeProductsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeProductsApp.swift; sourceTree = "<group>"; };
 		C7496EFE2BCDA8D3008D6A6E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +38,7 @@
 		C7496F192BCE25D2008D6A6E /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
 		C7496F1B2BCE3402008D6A6E /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 		C7496F1F2BCE4425008D6A6E /* AddProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewModel.swift; sourceTree = "<group>"; };
+		C74FCB8E2BCFB7090093DF76 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		C75FDFB22BCF885800EFF2DE /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		C75FDFB42BCF888200EFF2DE /* MultipartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C735DC482BD01581009F61B2 /* Launch Screen */ = {
+			isa = PBXGroup;
+			children = (
+				C735DC462BD01570009F61B2 /* Launch Screen.storyboard */,
+			);
+			name = "Launch Screen";
+			sourceTree = "<group>";
+		};
 		C7496EF02BCDA8D3008D6A6E = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +101,7 @@
 		C7496F0B2BCDA950008D6A6E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C735DC482BD01581009F61B2 /* Launch Screen */,
 				C7496F0D2BCDA97C008D6A6E /* Service */,
 				C7496F0C2BCDA95F008D6A6E /* Products */,
 			);
@@ -138,6 +151,7 @@
 				C7496F152BCDB522008D6A6E /* ProductsView.swift */,
 				C7496F172BCDB61A008D6A6E /* ProductCardView.swift */,
 				C7496F1B2BCE3402008D6A6E /* AddProductView.swift */,
+				C74FCB8E2BCFB7090093DF76 /* ProductView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -200,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C735DC472BD01570009F61B2 /* Launch Screen.storyboard in Resources */,
 				C7496F042BCDA8D4008D6A6E /* Preview Assets.xcassets in Resources */,
 				C7496F012BCDA8D4008D6A6E /* Assets.xcassets in Resources */,
 			);
@@ -216,6 +231,7 @@
 				C7496F112BCDAED5008D6A6E /* Product.swift in Sources */,
 				C7496F1A2BCE25D2008D6A6E /* ProductsViewModel.swift in Sources */,
 				C7496F202BCE4425008D6A6E /* AddProductViewModel.swift in Sources */,
+				C74FCB8F2BCFB7090093DF76 /* ProductView.swift in Sources */,
 				C7496EFD2BCDA8D3008D6A6E /* SwipeProductsApp.swift in Sources */,
 				C7496F1C2BCE3402008D6A6E /* AddProductView.swift in Sources */,
 				C75FDFB52BCF888200EFF2DE /* MultipartRequest.swift in Sources */,
@@ -362,6 +378,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -391,6 +408,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

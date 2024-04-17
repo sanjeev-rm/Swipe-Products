@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// This represents a product
 struct Product: Codable, Hashable, Identifiable {
     
     var id: UUID = UUID()
