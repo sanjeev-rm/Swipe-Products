@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class ProductsViewModel: ObservableObject {
     
     /// All the products retrieved from the server

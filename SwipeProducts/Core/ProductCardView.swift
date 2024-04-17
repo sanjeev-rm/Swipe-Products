@@ -1,5 +1,5 @@
 //
-//  ProductView.swift
+//  ProductCardView.swift
 //  SwipeProducts
 //
 //  Created by Sanjeev RM on 16/04/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProductView: View {
+struct ProductCardView: View {
     
     var product: Product
     
@@ -63,5 +63,5 @@ struct ProductView: View {
 }
 
 #Preview {
-    ProductView(product: Product(image: "", price: 1694.91525424, productName: "Test Product", productType: "Test", tax: 18))
+    ProductCardView(product: Product(image: "", price: 1694.91525424, productName: "Test Product", productType: "Test", tax: 18))
 }

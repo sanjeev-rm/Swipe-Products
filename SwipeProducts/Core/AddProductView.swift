@@ -47,6 +47,7 @@ struct AddProductView: View {
                     }
                 }
             }
+            .scrollDismissesKeyboard(.interactively)
         }
     }
 }
@@ -56,8 +57,10 @@ extension AddProductView {
     private var productTypeSection: some View {
         Section("Product Type") {
             Picker("Select type", selection: $addProductVM.product.productType) {
+                Text("").tag("")
                 ForEach(productsVM.productTypes, id: \.self) { type in
                     Text(type.uppercased())
+                        .tag(type)
                 }
             }
             .pickerStyle(.menu)
@@ -94,6 +97,7 @@ extension AddProductView {
                 Slider(value: $addProductVM.product.tax, in: 0...100, step: 1)
                 Spacer()
                 TextField("0", text: $addProductVM.taxString)
+                    .keyboardType(.decimalPad)
                     .frame(width: 52)
                     .monospaced()
                     .font(.title3)
@@ -191,7 +195,7 @@ extension AddProductView {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.systemGroupedBackground))
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation(.easeOut) {
                     dismiss()
                 }

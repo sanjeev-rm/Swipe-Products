@@ -23,7 +23,7 @@ struct ProductsView: View {
                         NavigationLink {
                             
                         } label: {
-                            ProductView(product: product)
+                            ProductCardView(product: product)
                                 .foregroundColor(.primary)
                         }
                     }
@@ -44,7 +44,7 @@ struct ProductsView: View {
                 productsViewModel.searchProduct(query: productsViewModel.searchQuery)
             }
             .fullScreenCover(isPresented: $productsViewModel.showAddProductView,
-                             onDismiss: { Task {productsViewModel.updateProductTypes()} },
+                             onDismiss: { Task { await productsViewModel.updateProducts()} },
                              content: {
                 AddProductView()
             })
