@@ -7,6 +7,7 @@
 
 import Foundation
 
+// An extension of Data, where we append to get information
 public extension Data {
 
     mutating func append(

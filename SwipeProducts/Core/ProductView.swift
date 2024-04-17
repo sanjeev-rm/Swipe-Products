@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View to present the product when tapped a product on the list
 struct ProductView: View {
     
     @Environment(\.dismiss) var dismiss

@@ -18,8 +18,10 @@ struct AddProductView: View {
         NavigationStack {
             ZStack {
                 if addProductVM.showSuccessMessage {
+                    /// When product added successfuly
                     successMessageView
                 } else {
+                    /// Form to fill to create a new product
                     List {
                         
                         productTypeSection
@@ -54,6 +56,7 @@ struct AddProductView: View {
 
 extension AddProductView {
     
+    /// Section for selecting product type
     private var productTypeSection: some View {
         Section("Product Type") {
             Picker("Select type", selection: $addProductVM.product.productType) {
@@ -68,12 +71,14 @@ extension AddProductView {
         }
     }
     
+    /// Section for selecting product name
     private var productNameSection: some View {
         Section("Product name") {
             TextField("Enter name", text: $addProductVM.product.productName)
         }
     }
     
+    /// Section for selecting product price
     private var sellingPriceSection: some View {
         Section("Selling Price") {
             HStack {
@@ -91,6 +96,7 @@ extension AddProductView {
         }
     }
     
+    /// Section for selecting product tax
     private var taxSection: some View {
         Section("Tax") {
             HStack {
@@ -104,9 +110,11 @@ extension AddProductView {
             }
         }
         .onChange(of: addProductVM.product.tax) {
+            // Updating the string format of the taxl, when the decimal value is updated using korean
             addProductVM.taxString = addProductVM.product.tax.formatted(.number)
         }
         .onChange(of: addProductVM.taxString) {
+            // Updating the decimal format of the tax1, when the decimal value is updated using korean
             if let doubleValue = Double(addProductVM.taxString),
                doubleValue <= 100, doubleValue >= 0 {
                 addProductVM.product.tax = doubleValue
@@ -116,10 +124,12 @@ extension AddProductView {
         }
     }
     
+    /// Section to select image
     private var imageSection: some View {
         Section("Image") {
             
-            PhotosPicker(selection: $addProductVM.selectedImage,
+            /// Implemented PhotosPicker from PhotosUI
+            PhotosPicker(selection: $addProductVM.selectedImageItem,
                          matching: .any(of: [.images])) {
                 if let image = addProductVM.image {
                     image
@@ -132,24 +142,27 @@ extension AddProductView {
                 }
             }
             
+            /// If image is present then presenting an button to remove the iimage
             if addProductVM.image != nil {
                 Button(role: .destructive) {
                     withAnimation(.easeOut) {
-                        addProductVM.selectedImage = nil
+                        addProductVM.selectedImageItem = nil
                     }
                 } label: {
                     Text("Remove Image")
                 }
             }
         }
-        .onChange(of: addProductVM.selectedImage) {
+        .onChange(of: addProductVM.selectedImageItem) {
+            /// When an item is selected / updated. Corresponding image is added to the product.
             Task {
-                if addProductVM.selectedImage == nil {
+                if addProductVM.selectedImageItem == nil {
+                    /// Removed image
                     addProductVM.image = nil
-                } else if let imageData = try? await addProductVM.selectedImage?.loadTransferable(type: Data.self) {
-                    if let uiImage = UIImage(data: imageData) {
-                        addProductVM.image = Image(uiImage: uiImage)
-                    }
+                } else if let imageData = try? await addProductVM.selectedImageItem?.loadTransferable(type: Data.self),
+                          let uiImage = UIImage(data: imageData) {
+                    /// Presenting the image, after getting from PhotosPicker
+                    addProductVM.image = Image(uiImage: uiImage)
                 } else {
                     print("DEBUG: unable to load selected image")
                 }
@@ -157,6 +170,7 @@ extension AddProductView {
         }
     }
     
+    /// Section to contain add product button
     private var addProductButton: some View {
         Section {
             Button {
@@ -178,6 +192,7 @@ extension AddProductView {
         .disabled(addProductVM.isAddProductButtonDisabled())
     }
     
+    /// Success message that is presented once the product is added
     private var successMessageView: some View {
         VStack(spacing: 32) {
             Image(systemName: "checkmark")
@@ -196,7 +211,7 @@ extension AddProductView {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
                 withAnimation(.easeOut) {
                     dismiss()
                 }

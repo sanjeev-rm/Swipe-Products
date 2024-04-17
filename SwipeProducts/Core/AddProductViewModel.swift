@@ -13,12 +13,19 @@ import SwiftUI
 @MainActor
 class AddProductViewModel: ObservableObject {
     
+    /// The product that will be added
     @Published var product = Product()
+    /// The price in String format
     @Published var priceString: String = ""
+    /// The tax in String format
     @Published var taxString: String = ""
-    @Published var selectedImage: PhotosPickerItem?
+    /// The PhotosPicker Item picked by the PhotosPicker in SwiftUI
+    @Published var selectedImageItem: PhotosPickerItem?
+    /// The image that is selected by the user
     @Published var image: Image?
+    /// Shows the progress during adding a product
     @Published var showProgress: Bool = false
+    /// Boolean value that is set to true, shows the success message when the product is added successfuly
     @Published var showSuccessMessage: Bool = false
     
     /// Function to check whether to disable to add button or not.

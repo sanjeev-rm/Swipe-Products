@@ -15,13 +15,32 @@ class ProductsViewModel: ObservableObject {
     @Published var allProducts: [Product] = []
     /// Products that are being presented
     @Published var products: [Product] = []
+    /// Query to search products using their name
     @Published var searchQuery: String = ""
+    /// Variable that decides whether to present the Add product view or not
     @Published var showAddProductView: Bool = false
+    /// Progress boolean variable to represent the progress during fetching products
     @Published var showProgress: Bool = false
     /// The list of product types currently in the database
     @Published var productTypes: [String] = []
+    /// The constraint by which the products are filtered
     @Published var filterBy: FilterBy = .all
+    /// The constraints by which the products are sorted
     @Published var sortBy: SortBy = .latest
+    
+    /// The parameter by which the products are filtered
+    enum FilterBy: Hashable {
+        case all
+        case productType(type: String)
+    }
+    
+    /// The parameters by which we can sort the products
+    enum SortBy: String, CaseIterable, Hashable {
+        case latest = "Latest"
+        case name = "Name"
+        case priceLowToHigh = "Price low to high"
+        case priceHighToLow = "Price high to low"
+    }
     
     /// Function to update the products list
     func fetchProducts() async {
@@ -56,18 +75,7 @@ class ProductsViewModel: ObservableObject {
         productTypes = Array(types)
     }
     
-    enum SortBy: String, CaseIterable, Hashable {
-        case latest = "Latest"
-        case name = "Name"
-        case priceLowToHigh = "Price low to high"
-        case priceHighToLow = "Price high to low"
-    }
-    
-    enum FilterBy: Hashable {
-        case all
-        case productType(type: String)
-    }
-    
+    /// This function filters the products by the filterBy parameter in the ViewModel
     func filterProducts() {
         withAnimation(.easeInOut) {
             switch filterBy {
@@ -80,6 +88,7 @@ class ProductsViewModel: ObservableObject {
         }
     }
     
+    /// This function sorts the products by the sortBy parameter in the ViewModel
     func sortProducts() {
         withAnimation(.easeInOut) {
             products.sort { lhs, rhs in
